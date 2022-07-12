@@ -30,6 +30,7 @@ const Login = ({setAuth}) => {
     })
 
   } 
+  //if auth value is true
   useEffect(()=>{
 if(window.localStorage.getItem("auth")==="true"){
   navigate("/",{replace:true});
