@@ -52,7 +52,7 @@ const newUserData = async (decodeValue, req, res) => {
   const updateUserData = async (decodeValue, req, res) => {
     const filter = { user_id: decodeValue.user_id };
     const options = {
-      upsert: true,
+      upsert: true, //create new document when not found
       new: true,
     };
   
