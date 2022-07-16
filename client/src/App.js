@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { app } from './config/firebase.config';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import {AnimatePresence} from 'framer-motion'
 
 function App() {
   
@@ -31,12 +32,14 @@ function App() {
     })
   },[])
   return (
-    <div className="flex items-center justify-center w-screen h-screen bg-primary ">
+    <AnimatePresence exitBeforeEnter>
+    <div className="flex items-center justify-center h-auto min-w-[680px] bg-primary ">
     <Routes>
       <Route path="/login" element={<Login setAuth={setAuth}/>} />
       <Route path="/*" element={<Home />} />
     </Routes>
     </div>
+    </AnimatePresence>
   );
 }
 
