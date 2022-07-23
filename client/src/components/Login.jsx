@@ -30,9 +30,9 @@ const Login = ({setAuth}) => {
               validateUser(token).then((data)=>{
                 // console.log(data);
                 dispatch({
-                  type:actionType.SET_USER,
-                  user:data,
-                })
+                  type: actionType.SET_USER,
+                  user: data,
+                });
               })
             })
 

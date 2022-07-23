@@ -4,34 +4,43 @@ const UserSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
     },
     email: {
       type: String,
-      require: true,
+      required: true,
     },
-    imageUrl: {
+    imageURL: {
       type: String,
-      require: true,
+      required: true,
     },
     user_id: {
       type: String,
-      require: true,
+      required: true,
     },
-    email_verified: {
+
+    email_verfied: {
       type: Boolean,
-      require: true,
+      required: true,
     },
+
+    favourites: [
+      {
+        songId: String,
+      },
+    ],
+
     role: {
       type: String,
-      require: true,
+      required: true,
     },
+
     auth_time: {
       type: String,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports =mongoose.model("user",UserSchema);
+module.exports = mongoose.model("user", UserSchema);

@@ -25,19 +25,21 @@ function App() {
   const [auth, setAuth] = useState(false || window.localStorage.getItem("auth")==="true");
 
   useEffect(()=>{
-    firebaseAuth.onAuthStateChanged((userCred)=>{
-      if(userCred){
-        userCred.getIdToken().then((token)=>{
-          // console.log(token)
-          validateUser(token).then((data)=>{
-            // console.log(data);
+    firebaseAuth.onAuthStateChanged((userCred) => {
+      if (userCred) {
+        userCred.getIdToken().then((token) => {
+          // console.log(token);
+          window.localStorage.setItem("auth", "true");
+          validateUser(token).then((data) => {
             dispatch({
-              type:actionType.SET_USER,
-              user:data,
-            })
-          })
-        })
-      }else{
+              type: actionType.SET_USER,
+              user: data,
+            });
+            // console.log(data)
+          });
+        });
+      }
+      else{
         setAuth(false);
         window.localStorage.setItem("auth","false");
         dispatch({
