@@ -1,6 +1,6 @@
 import './App.css';
 import { Route,Routes } from 'react-router-dom';
-import { Login } from './components';
+import { Dashboard, Login } from './components';
 import Home from './components/Home';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -11,6 +11,7 @@ import {AnimatePresence} from 'framer-motion'
 import { validateUser } from './api';
 import { useStateValue } from './context/StateProvider';
 import { actionType } from './context/reducer';
+
 
 function App() {
   
@@ -56,6 +57,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login setAuth={setAuth}/>} />
       <Route path="/*" element={<Home />} />
+      <Route path="/dashboard/*" element={<Dashboard />} />
     </Routes>
     </div>
     </AnimatePresence>
