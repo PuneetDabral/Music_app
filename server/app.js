@@ -16,6 +16,22 @@ app.get('/', (req,res)=>{
 const userRoute = require('./routes/auth');
 app.use("/api/users/",userRoute);
 
+//Artist route
+const artistsRoutes = require('./routes/artist');
+app.use('/api/artists/',artistsRoutes);
+
+
+// Albums Route
+const albumRoutes = require('./routes/albums');
+app.use('/api/albums/',albumRoutes);
+
+// songs Route
+const songRoutes = require('./routes/songs')
+app.use('/api/songs/',songRoutes);
+
+
+
+
 mongoose.connect(process.env.DB_STRING,{useNewUrlParser : true});
 mongoose.connection.once("open",()=>"connected").on("error",(error)=>{
     console.log(`ERROR: ${error}`);
