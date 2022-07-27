@@ -7,6 +7,7 @@ const cors = require('cors');
 const {default:mongoose} = require('mongoose');
 
 app.use(cors({origin:true}));
+app.use(express.json());
 
 app.get('/', (req,res)=>{
     return res.json("hii")
