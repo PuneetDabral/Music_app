@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import axios from "axios";
 
 const baseURL = "http://localhost:4000/";
@@ -14,3 +15,12 @@ export const validateUser = async (token) => {
     return null;
   }
 };
+
+export const getAllUsers = async()=>{
+  try{
+const res = await axios.get(`${baseURL}/api/users/getUsers`)
+return res.data;
+  }catch(err){
+    return null;
+  }
+}
