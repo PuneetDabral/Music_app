@@ -32,6 +32,7 @@ const reducer = (state, action) => {
         ...state,
         allAlbums: action.allAlbums,
       };
+      
     case actionType.SET_ALL_ARTISTS:
       return {
         ...state,

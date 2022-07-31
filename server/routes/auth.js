@@ -64,4 +64,36 @@ const updateUserData = async (decodeValue, req, res) => {
   }
 };
 
+router.get("/getUsers", async (req, res) => {
+  const options = {
+    // sort returned documents in ascending order
+    sort: { createdAt: 1 },
+    // Include only the following
+    // projection : {}
+  };
+
+  const cursor = await user.find(options);
+  if (cursor) {
+    res.status(200).send({ success: true, data: cursor });
+  } else {
+    res.status(200).send({ success: true, msg: "No Data Found" });
+  }
+});
+
+
+
+router.get("/getUser/:userId", async (req, res) => {
+  const filter = { _id: req.params.userId };
+
+  const userExists = await user.findOne({ _id: filter });
+  if (!userExists)
+    return res.status(400).send({ success: false, msg: "Invalid User ID" });
+  if (userExists.favourites) {
+    res.status(200).send({ success: true, data: userExists });
+  } else {
+    res.status(200).send({ success: false, data: null });
+  }
+});
+
+
 module.exports = router;
