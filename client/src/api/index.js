@@ -52,3 +52,24 @@ return res.data
     return null;
   }
 }
+
+
+
+export const changingUserRole = async(userId,role)=>{
+  try{
+    const res = await axios.put(`${baseURL}api/users/updateRole/${userId}`,{data:{role:role}});
+    return res;
+  }catch(err){
+    return null;
+  }
+}
+
+
+export const removeUser = async(userId)=>{
+  try{
+    const res = await axios.delete(`${baseURL}api/users/delete/${userId}`);
+    return res;
+  }catch(err){
+    return null;
+  }
+}
